@@ -1,0 +1,4 @@
+Validation code: dhfr48nf89jk093f9kj0d2d
+
+post = posts.find({"permalink": permalink})
+posts.update({'permalink': permalink}, {'$set': {'comments': [{'body':body, 'author': name}]}}, upsert=True)
