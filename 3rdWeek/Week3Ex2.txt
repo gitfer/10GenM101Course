@@ -1,3 +1,4 @@
+Validation code: hjkfd489hjkfhds8934kf23
 posts.insert(post)
 cursor = posts.find({}).sort("date", pymongo.DESCENDING).limit(10)
 post = posts.find_one({"permalink": permalink}
