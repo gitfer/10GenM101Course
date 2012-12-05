@@ -1,0 +1,8 @@
+ESERCIZIO 3
+db.prova.aggregate([ 
+	{$unwind: "$scores" },  
+	{$match: {$or: [{"scores.type":"exam"}, {"scores.type": "homework"}] }},  
+	{$group: { _id: {'studente': "$student_id", 'classe': "$class_id" }, 'punteggiomedio': {$avg: "$scores.score"} } },  
+	{$group: { _id: "$_id.classe",  'punt': {$avg: '$punteggiomedio'} } }, 
+	{$sort: { punt: 1 }}  
+])
