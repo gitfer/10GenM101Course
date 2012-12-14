@@ -1,0 +1,14 @@
+db.messages.aggregate([ 
+{ $unwind:"$headers.To" }, 
+{ $group:         
+	{        _id:{        
+		"mittente": "$headers.From",        
+		"destinatario": "$headers.To"
+		  },
+                "scambi": {$sum: 1}        
+	} 
+}, 
+{$sort: {"scambi":1}} 
+])
+
+answer: susan.mara@enron.com to richard.shapiro@enron.com

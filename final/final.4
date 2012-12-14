@@ -1,0 +1,8 @@
+	comment=post['comments'][ordinal]
+ 	if 'num_likes' not in comment:
+ 		comment['num_likes'] = 0;
+ 	comment['num_likes'] = int(comment['num_likes'])+1
+ 	post['comments'][ordinal]=comment
+ 	posts.save(post)
+
+answer: 89jlkfdsjflks34j0d

@@ -1,0 +1,23 @@
+or (var i=0; i< 10000; i++){ db.fubar.insert({'a': Math.floor(Math.random() * 20000), 'b': Math.floor(Math.random() * 20000), 'c': Math.floor(Math.random() * 20000)}); }
+
+db.fubar.ensureIndex({a:1, b:1})
+db.fubar.ensureIndex({a:1, c:1})
+db.fubar.ensureIndex({c:1})
+db.fubar.ensureIndex({a:1, b:1, c:-1})
+
+db.fubar.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).explain()
+
+
+db.fubar.dropIndex({c:1})
+db.fubar.dropIndex({a:1, b:1})
+db.fubar.dropIndex({a:1, b:1, c:-1})
+db.fubar.dropIndex({a:1, c:1})
+
+answer:
+a_1_b_1
+
+a_1_c_1
+
+c_1
+
+a_1_b_1_c_-1

@@ -1,0 +1,2 @@
+Query di verifica:
+db.images.aggregate({$group: {_id:"", totale: {$sum: "$_id"}}})	
